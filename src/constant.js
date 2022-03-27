@@ -17,7 +17,8 @@ export const SNOW_CONFIG = {
 const CLUE_CONFIG = {
   treasurePos: '书房的柜子', // 宝箱藏的位置
   firstNum: '十二白', // 钢琴的第十二个白色键对应的音调数字
-  firstClue: '像桌不是桌，不能摆吃喝。有黑又有白，一摁就唱歌' // 钢琴
+  firstClue: '像桌不是桌，不能摆吃喝。有黑又有白，一摁就唱歌', // 钢琴
+  secondClue: '第二个数字就藏在第二行第三个格子里'
 }
 
 const princess_amazed_img = require('./assets/image/princess-amazed.gif')
@@ -98,21 +99,32 @@ export const TALK_TEXT = {
     goNext: true
   },
   14: {
+    isLeft: true,
+    talk: '咦，人参老爷爷，您怎么背着小人参在外面溜达呀！外面好危险。',
+    roleImg: princess_amazed_img
+  },
+  15: {
     isLeft: false,
-    talk: '英勇的公主殿下，森林里的小老鼠最近一直在地下钻来钻去，吵得我的宝贝们不安宁，希望公主殿下可以帮我们解决小老鼠。',
+    talk: '英勇的公主殿下，森林里的小老鼠最近一直在地下钻来钻去，吵得我的宝贝们不安宁，如果公主殿下可以帮我们解决小老鼠的话，我们就可以回到我们的家了。',
     roleImg: ginseng_img,
     textHeight: 52,
   },
-  15: {
+  16: {
     isLeft: true,
     talk: '交给本公主吧！',
     roleImg: princess_stand_img
   },
-  16: {
+  17: {
     isLeft: false,
     talk: '【】',
     roleImg: ginseng_img,
     textHeight: 52,
     hasChoose: true
-  }
+  },
+  18: {
+    isLeft: false,
+    talk: `谢谢您英勇的公主，我知道您想要什么，但是我并不知道第二个数字和线索，但是我昨天在冰雪谷听见【小雪人说：${CLUE_CONFIG.secondClue}】。然而我并不知道这是什么意思，不过我认为这句话很重要。`,
+    roleImg: cat_img,
+    textHeight: 52,
+  },
 }
