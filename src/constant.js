@@ -18,14 +18,16 @@ const CLUE_CONFIG = {
   treasurePos: '书房的柜子', // 宝箱藏的位置
   firstNum: '十二白', // 钢琴的第十二个白色键对应的音调数字
   firstClue: '像桌不是桌，不能摆吃喝。有黑又有白，一摁就唱歌', // 钢琴
-  secondClue: '第二个数字就藏在第二行第三个格子里'
+  secondClue: '第二个数字就藏在第二行第三个格子里', // 第二个数字的线索
+  boxPos: '烘焙箱里' , // 小雪人的爱心盒子位置
 }
 
 const princess_amazed_img = require('./assets/image/princess-amazed.gif')
 const princess_stand_img = require('./assets/image/princess-stand.gif')
 const cat_img = require('./assets/image/cat.gif')
 const ginseng_img = require('./assets/image/ginseng.gif')
-
+const snowman_img = require('./assets/image/snowman.gif')
+const mushroom_1 = require('./assets/image/scene_4_1.gif')
 
 // 剧本
 export const TALK_TEXT = {
@@ -69,6 +71,7 @@ export const TALK_TEXT = {
     roleImg: princess_stand_img,
     goNext: true
   },
+  // 第一关-钓鱼
   9: {
     isLeft: true,
     talk: '呀!遇到了妖怪！',
@@ -98,6 +101,7 @@ export const TALK_TEXT = {
     roleImg: princess_stand_img,
     goNext: true
   },
+  // 第二关-打地鼠
   14: {
     isLeft: true,
     talk: '咦，人参老爷爷，您怎么背着小人参在外面溜达呀！外面好危险。',
@@ -124,7 +128,51 @@ export const TALK_TEXT = {
   18: {
     isLeft: false,
     talk: `谢谢您英勇的公主，我知道您想要什么，但是我并不知道第二个数字和线索，但是我昨天在冰雪谷听见【小雪人说：${CLUE_CONFIG.secondClue}】。然而我并不知道这是什么意思，不过我认为这句话很重要。`,
-    roleImg: cat_img,
+    roleImg: ginseng_img,
     textHeight: 52,
+  },
+  19: {
+    isLeft: true,
+    talk: '嗯。。。【${CLUE_CONFIG.secondClue}】，暂时还不明白什么意思，我需要去冰雪谷看看~',
+    roleImg: princess_stand_img,
+    goNext: true
+  },
+  // 第三关-雪花雨
+  20: {
+    isLeft: true,
+    talk: '额。。。这里。。好冷。。',
+    roleImg: princess_stand_img
+  },
+  21: {
+    isLeft: false,
+    talk: `哒哒~~远道而来的公主哟~~我的身子越来越小啦，马上就要下雪啦，你可以帮我采集${SNOW_CONFIG.snowNum}朵雪花嘛~`,
+    roleImg: snowman_img,
+    textHeight: 52,
+    hasChoose: true
+  },
+  22: {
+    isLeft: false,
+    talk: `哒哒~~谢谢您~~，我昨天做了一个爱心盒子，放在了【${CLUE_CONFIG.boxPos}】。我把它送给您，里面有第二个数字，但是我忘记了放在哪个格子里。`,
+    roleImg: snowman_img,
+    textHeight: 52,
+  },
+  23: {
+    isLeft: true,
+    talk: '这样就得到第二个数字啦！',
+    roleImg: princess_stand_img,
+    goNext: true
+  },
+  // 第四关-谜语
+  24: {
+    isLeft: true,
+    talk: '咦，你们围在这里在做什么？',
+    roleImg: princess_amazed_img
+  },
+  25: {
+    isLeft: false,
+    talk: '我们在玩猜谜游戏~我们有四个谜语，公主要一个一个猜，最后一个谜语的答案就是第三个数字的线索~',
+    roleImg: mushroom_1,
+    textHeight: 52,
+    hasChoose: true
   },
 }
