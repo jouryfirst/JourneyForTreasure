@@ -23,6 +23,7 @@ const CLUE_CONFIG = {
 const princess_amazed_img = require('./assets/image/princess-amazed.gif')
 const princess_stand_img = require('./assets/image/princess-stand.gif')
 const cat_img = require('./assets/image/cat.gif')
+const ginseng_img = require('./assets/image/ginseng.gif')
 
 
 // 剧本
@@ -98,9 +99,20 @@ export const TALK_TEXT = {
   },
   14: {
     isLeft: false,
-    talk: '英勇的公主殿下，',
-    roleImg: cat_img,
+    talk: '英勇的公主殿下，森林里的小老鼠最近一直在地下钻来钻去，吵得我的宝贝们不安宁，希望公主殿下可以帮我们解决小老鼠。',
+    roleImg: ginseng_img,
+    textHeight: 52,
+  },
+  15: {
+    isLeft: true,
+    talk: '交给本公主吧！',
+    roleImg: princess_stand_img
+  },
+  16: {
+    isLeft: false,
+    talk: '【】',
+    roleImg: ginseng_img,
     textHeight: 52,
     hasChoose: true
-  },
+  }
 }
