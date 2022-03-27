@@ -1,6 +1,8 @@
 export default defineAppConfig({
   pages: [
-    'pages/index/index'
+    'pages/index/index',
+    'tasks/Rain',
+    'tasks/Fish'
   ],
   window: {
     backgroundTextStyle: 'light',
