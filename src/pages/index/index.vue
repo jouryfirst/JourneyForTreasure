@@ -44,7 +44,7 @@ export default {
   },
   data() {
     return {
-      sceneIndex: 11, // 第几个场景
+      sceneIndex: 24, // 第几个场景
       canTap: false, // 语句未显示完不可点击
       runVisible: false, // 跑步动画
       obj: {

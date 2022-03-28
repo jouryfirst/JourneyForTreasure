@@ -132,25 +132,25 @@ export const TALK_TEXT = {
   },
   18: {
     isLeft: false,
-    talk: `谢谢您英勇的公主，我知道您想要什么，但是我并不知道第二个数字和线索，但是我昨天在冰雪谷听见【小雪人说：${CLUE_CONFIG.secondClue}】。然而我并不知道这是什么意思，不过我认为这句话很重要。`,
+    talk: `谢谢您英勇的公主，我知道您想要什么，很抱歉我并不知道第二个数字和线索，但是我昨天在冰雪谷听见【小雪人说：${CLUE_CONFIG.secondClue}】。然而我并不知道这是什么意思，不过我认为这句话很重要。`,
     roleImg: ginseng_img,
-    textHeight: 52,
+    textHeight: 58,
   },
   19: {
     isLeft: true,
-    talk: '嗯。。。【${CLUE_CONFIG.secondClue}】，暂时还不明白什么意思，我需要去冰雪谷看看~',
+    talk: `嗯。。。【${CLUE_CONFIG.secondClue}】，暂时还不明白什么意思，我需要去冰雪谷看看~`,
     roleImg: princess_stand_img,
     goNext: true
   },
   // 第三关-雪花雨
   20: {
     isLeft: true,
-    talk: '额。。。这里。。好冷。。',
+    talk: '这里就是冰雪谷啦~~',
     roleImg: princess_stand_img
   },
   21: {
     isLeft: false,
-    talk: `哒哒~~远道而来的公主哟~~我的身子越来越小啦，马上就要下雪啦，你可以帮我采集${SNOW_CONFIG.snowNum}朵雪花嘛~`,
+    talk: `哒哒~~远道而来的公主哟~~我的身子越来越小啦，马上就要下雪啦，你可以帮我采集${SNOW_CONFIG.target}朵雪花嘛~`,
     roleImg: snowman_img,
     textHeight: 52,
     hasChoose: true
@@ -171,8 +171,69 @@ export const TALK_TEXT = {
   24: {
     isLeft: false,
     talk: '智慧的公主呀~我有十二个谜语，公主要一个一个猜，最后一个谜语的答案就是第三个数字的线索~',
-    roleImg: mushroom_1,
+    roleImg: mushroom_img,
     textHeight: 52,
     hasChoose: true
   },
+}
+
+export const RIDDLE_LISTS = {
+  1: {
+    riddle: '什么尖尖海里游？',
+    options: ['水母', '鱿鱼', '海蜇', '海参'],
+    answerIndex: 1
+  },
+  2: {
+    riddle: '什么尖尖水边走？',
+    options: ['0', '0', '0', '0'],
+    answerIndex: 1
+  },
+  3: {
+    riddle: '什么尖尖街上卖？',
+    options: ['手帕', '镜子', '粽子', '包子'],
+    answerIndex: 2
+  },
+  4: {
+    riddle: '什么尖尖墙上头？',
+    options: ['钉子', '壁画', '挂钟', '柜子'],
+    answerIndex: 0
+  },
+  5: {
+    riddle: '什么方方海里游？',
+    options: ['鲨鱼', '鱿鱼', '海星', '箱鲀'],
+    answerIndex: 3
+  },
+  6: {
+    riddle: '什么方方水边走？',
+    options: ['0', '0', '0', '0'],
+    answerIndex: 1
+  },
+  7: {
+    riddle: '什么方方街上卖？',
+    options: ['手帕', '镜子', '粽子', '包子'],
+    answerIndex: 0
+  },
+  8: {
+    riddle: '什么方方墙上头？',
+    options: ['钉子', '壁画', '挂钟', '星星'],
+    answerIndex: 1
+  },
+  9: {
+    riddle: '什么圆圆海里游？',
+    options: ['水母', '鱿鱼', '海蜇', '海参'],
+    answerIndex: 0
+  },
+  10: {
+    riddle: '什么圆圆水边走？',
+    options: ['芦苇', '水牛', '锄头', '水车'],
+    answerIndex: 3
+  },
+  11: {
+    riddle: '什么圆圆街上卖？',
+    options: ['手帕', '汤圆', '粽子', '馄饨'],
+    answerIndex: 1
+  },
+  12: {
+    riddle: '【什么圆圆墙上头？】'
+  }
 }

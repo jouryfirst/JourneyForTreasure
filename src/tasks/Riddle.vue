@@ -1,6 +1,10 @@
 <template>
   <view class="task-riddle-container">
-    <view class="talk-dialog" />
+    <view class="talk-dialog">
+      <text class="output-text">
+        {{ riddleText }}
+      </text>
+    </view>
     <view class="role-wrap">
       <image
         class="role-img"
@@ -11,10 +15,13 @@
 </template>
 
 <script>
+import { RIDDLE_LISTS } from '../constant'
 export default {
   data() {
     return {
       roleImg: require("../assets/image/mushroom.gif"),
+      riddleIndex: 1,
+      riddleText: '什么尖尖海里游？'
     };
   },
 };
@@ -25,6 +32,8 @@ export default {
   position: relative;
   width: 100vw;
   height: 100vh;
+  background-image: url('../assets/image/forest.png');
+    background-size: cover;
   .talk-dialog {
     position: absolute;
     left: 50%;

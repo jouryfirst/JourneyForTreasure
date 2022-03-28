@@ -183,7 +183,9 @@ export default {
       this.initSnow()
     },
     goNext() {
-
+Taro.navigateTo({
+        url: "/pages/index/index?sceneIndex=22",
+      });
     }
   },
 };
