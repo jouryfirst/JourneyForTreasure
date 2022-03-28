@@ -76,7 +76,6 @@ export default {
   },
   created () {
     this.$instance = Taro.getCurrentInstance()
-    console.log(this.$instance)
   },
   mounted() {
     if (this.$instance.router.params.sceneIndex) {
@@ -115,6 +114,9 @@ export default {
       if (!this.canTap) return;
       const url = {
         11: "/tasks/Fish",
+        17: '/tasks/Mouse',
+        21: '/tasks/Rain',
+        24: '/tasks/Riddle'
       };
       Taro.navigateTo({
         url: url[this.sceneIndex],

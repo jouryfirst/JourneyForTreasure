@@ -7,6 +7,11 @@ export const FISH_CONFIG = {
   fishFleeForce: 25 // 拉力到25鱼就逃走
 }
 
+// 打地鼠配置
+export const MOUSE_CONFIG = {
+  target: 10, // 目标数
+}
+
 // 雪花雨配置
 export const SNOW_CONFIG = {
   target: 15, // 目标数
@@ -27,7 +32,7 @@ const princess_stand_img = require('./assets/image/princess-stand.gif')
 const cat_img = require('./assets/image/cat.gif')
 const ginseng_img = require('./assets/image/ginseng.gif')
 const snowman_img = require('./assets/image/snowman.gif')
-const mushroom_1 = require('./assets/image/scene_4_1.gif')
+const mushroom_img = require('./assets/image/mushroom.gif')
 
 // 剧本
 export const TALK_TEXT = {
@@ -120,7 +125,7 @@ export const TALK_TEXT = {
   },
   17: {
     isLeft: false,
-    talk: '【】',
+    talk: `【小老鼠会在洞里钻来钻去，在露出脑袋的时候可以点击它，点击${MOUSE_CONFIG.target}次就可以赶走它了。】`,
     roleImg: ginseng_img,
     textHeight: 52,
     hasChoose: true
@@ -165,7 +170,7 @@ export const TALK_TEXT = {
   // 第四关-谜语
   24: {
     isLeft: false,
-    talk: '智慧的化身呀~我有四个谜语，公主要一个一个猜，最后一个谜语的答案就是第三个数字的线索~',
+    talk: '智慧的公主呀~我有十二个谜语，公主要一个一个猜，最后一个谜语的答案就是第三个数字的线索~',
     roleImg: mushroom_1,
     textHeight: 52,
     hasChoose: true
