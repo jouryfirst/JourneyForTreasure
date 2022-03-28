@@ -22,7 +22,7 @@ const CLUE_CONFIG = {
   boxPos: '烘焙箱里' , // 小雪人的爱心盒子位置
 }
 
-const princess_amazed_img = require('./assets/image/princess-amazed.gif')
+const princess_amazed_img = require('./assets/image/princess-amazed.png')
 const princess_stand_img = require('./assets/image/princess-stand.gif')
 const cat_img = require('./assets/image/cat.gif')
 const ginseng_img = require('./assets/image/ginseng.gif')
@@ -164,13 +164,8 @@ export const TALK_TEXT = {
   },
   // 第四关-谜语
   24: {
-    isLeft: true,
-    talk: '咦，你们围在这里在做什么？',
-    roleImg: princess_amazed_img
-  },
-  25: {
     isLeft: false,
-    talk: '我们在玩猜谜游戏~我们有四个谜语，公主要一个一个猜，最后一个谜语的答案就是第三个数字的线索~',
+    talk: '智慧的化身呀~我有四个谜语，公主要一个一个猜，最后一个谜语的答案就是第三个数字的线索~',
     roleImg: mushroom_1,
     textHeight: 52,
     hasChoose: true

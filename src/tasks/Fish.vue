@@ -13,9 +13,9 @@
     >
       <view
         class="show-text"
-        :class="{'success-text': isCatched}"
+        :class="{ 'success-text': isCatched }"
       >
-        {{ showFail ? '鱼儿脱钩了~~' : '钓到鱼啦！' }}
+        {{ showFail ? "鱼儿脱钩了~~" : "钓到鱼啦！" }}
       </view>
       <view
         v-if="showFail"
@@ -37,7 +37,7 @@
 
 <script>
 import Taro from "@tarojs/taro";
-import { FISH_CONFIG } from '../constant'
+import { FISH_CONFIG } from "../constant";
 
 export default {
   name: "",
@@ -76,103 +76,113 @@ export default {
       // canvas 2D必须这样才能清空画布
       this.ctx.beginPath();
     },
+    clearShrinkTimer() {
+      // wx小程序有时会发现无法清除定时器，需赋值null
+      clearInterval(this.shrinkTimer);
+      this.shrinkTimer = null;
+    },
+    clearExtendTimer() {
+      clearInterval(this.extendTimer);
+      this.extendTimer = null;
+    },
     // 收线
     shrinkLine() {
-      clearInterval(this.extendTimer);
+      this.clearExtendTimer();
       if (this.isUnhook || this.isCatched) return;
-      const that = this;
+      // 定时器bug https://developers.weixin.qq.com/community/develop/doc/00004485db0170052d6abc12f54400
+      clearInterval(this.shrinkTimer)
       this.shrinkTimer = setInterval(() => {
-        if (that.lineY <= 47) {
+        if (this.lineY <= 47) {
           // 钓到鱼了
-          that.isCatched = true;
-          clearInterval(that.shrinkTimer);
+          this.isCatched = true;
+          this.clearShrinkTimer();
         }
-        that.clearCanvas();
-        that.lineForce++; // 拉力增加
+        this.clearCanvas();
+        this.lineForce++; // 拉力增加
         // 收线阶段
-        if (that.lineForce < that.stalemate) {
-          that.fishX -= 3;
-          that.fishY -= 5;
-          that.ctx.moveTo(10, 0);
-          that.ctx.lineTo(that.lineX, that.lineY);
-          that.ctx.drawImage(that.fishImg, that.fishX, that.fishY, 69, 47);
-          that.ctx.stroke();
+        if (this.lineForce < this.stalemate) {
+          this.fishX -= 3;
+          this.fishY -= 5;
+          this.ctx.moveTo(10, 0);
+          this.ctx.lineTo(this.lineX, this.lineY);
+          this.ctx.drawImage(this.fishImg, this.fishX, this.fishY, 69, 47);
+          this.ctx.stroke();
         } else if (
-          that.lineForce >= that.stalemate &&
-          that.lineForce < that.fishFleeForce
+          this.lineForce >= this.stalemate &&
+          this.lineForce < this.fishFleeForce
         ) {
           // 僵持阶段
-          that.ctx.moveTo(10, 0);
-          that.fishX = that.fishX + (Math.random() * 2 - 1);
-          that.ctx.lineTo(that.lineX, that.lineY);
-          that.ctx.drawImage(that.fishImg, that.fishX, that.fishY, 69, 47);
-          that.ctx.stroke();
+          this.ctx.moveTo(10, 0);
+          this.fishX = this.fishX + (Math.random() * 2 - 1);
+          this.ctx.lineTo(this.lineX, this.lineY);
+          this.ctx.drawImage(this.fishImg, this.fishX, this.fishY, 69, 47);
+          this.ctx.stroke();
         } else {
           // 脱钩
-          that.unhook();
+          this.unhook();
         }
       }, 100);
     },
     // 放线
     extendLine() {
-      clearInterval(this.shrinkTimer);
+      this.clearShrinkTimer();
       if (this.isUnhook || this.isCatched) return;
       this.lineForce = 0;
-      const that = this;
+      clearInterval(this.extendTimer)
       this.extendTimer = setInterval(() => {
-        if (that.lineY >= 400) {
-          clearInterval(that.extendTimer);
+        if (this.lineY >= 400) {
+          this.clearExtendTimer();
         }
-        that.clearCanvas();
-        that.fishX += 3;
-        that.fishY += 5;
-        that.ctx.moveTo(10, 0);
-        that.ctx.lineTo(that.lineX, that.lineY);
-        that.ctx.drawImage(
-          that.fishReverseImg,
-          that.fishX - 20,
-          that.fishY,
+        this.clearCanvas();
+        this.fishX += 3;
+        this.fishY += 5;
+        this.ctx.moveTo(10, 0);
+        this.ctx.lineTo(this.lineX, this.lineY);
+        this.ctx.drawImage(
+          this.fishReverseImg,
+          this.fishX - 20,
+          this.fishY,
           69,
           47
         );
-        that.ctx.stroke();
+        this.ctx.stroke();
       }, 100);
     },
     // 脱钩
     unhook() {
       this.isUnhook = true;
       this.lineForce = 0;
-      const that = this;
+      clearInterval(this.unhookTimer)
       this.unhookTimer = setInterval(() => {
-        if (that.fishY >= that.initY) {
-          clearInterval(that.unhookTimer);
-          that.showFail = true;
+        if (this.fishY >= this.initY) {
+          clearInterval(this.unhookTimer);
+          this.showFail = true;
         }
-        that.clearCanvas();
-        that.fishX += 10;
-        that.fishY += 10;
-        that.ctx.drawImage(this.fishReverseImg, this.fishX, this.fishY, 69, 47);
+        this.clearCanvas();
+        this.fishX += 10;
+        this.fishY += 10;
+        this.ctx.drawImage(this.fishReverseImg, this.fishX, this.fishY, 69, 47);
       }, 100);
-      clearInterval(this.extendTimer);
-      clearInterval(this.shrinkTimer);
+      this.clearExtendTimer();
+      this.clearShrinkTimer();
     },
     // 重试
     restart() {
       this.showFail = false;
       this.isUnhook = false;
-      this.fishX = this.initX
-      this.fishY = this.initY
+      this.fishX = this.initX;
+      this.fishY = this.initY;
       this.clearCanvas();
       this.ctx.moveTo(10, 0);
       this.ctx.lineTo(this.lineX, this.lineY);
       this.ctx.stroke();
       this.ctx.drawImage(this.fishImg, this.initX, this.initY, 69, 47);
     },
-    goNext () {
+    goNext() {
       Taro.navigateTo({
-        url: '/pages/index/index?sceneIndex=12',
+        url: "/pages/index/index?sceneIndex=12",
       });
-    }
+    },
   },
   onReady() {
     const query = wx.createSelectorQuery();
@@ -227,11 +237,8 @@ export default {
       &.success-text {
         font-size: 66px;
         color: #f4572f;
-        text-shadow: 0 0 2px #fff,
-                     0 0 5px #fff,
-                     0 0 8px #fff,
-                     0 0 10px #a8416c,
-                     0 0 12px #a8416c
+        text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 8px #fff, 0 0 10px #a8416c,
+          0 0 12px #a8416c;
       }
     }
     .restart-btn {

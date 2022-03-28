@@ -44,7 +44,7 @@ export default {
   },
   data() {
     return {
-      sceneIndex: 12, // 第几个场景
+      sceneIndex: 11, // 第几个场景
       canTap: false, // 语句未显示完不可点击
       runVisible: false, // 跑步动画
       obj: {
@@ -76,10 +76,11 @@ export default {
   },
   created () {
     this.$instance = Taro.getCurrentInstance()
+    console.log(this.$instance)
   },
   mounted() {
     if (this.$instance.router.params.sceneIndex) {
-      this.sceneIndex = this.$instance.router.params.sceneIndex
+      this.sceneIndex = Number(this.$instance.router.params.sceneIndex)
     }
     this.printText();
   },
@@ -97,7 +98,7 @@ export default {
       this.obj.output = "";
       this.canTap = false;
       if (TALK_TEXT[this.sceneIndex].goNext) {
-        console.log(this.runVisible);
+
         this.runVisible = true;
         setTimeout(() => {
           this.runVisible = false;
