@@ -28,7 +28,9 @@ const CLUE_CONFIG = {
 }
 
 const princess_amazed_img = require('./assets/image/princess-amazed.png')
-const princess_stand_img = require('./assets/image/princess-stand.gif')
+const princess_stand_img = require('./assets/image/princess-stand.png')
+const princess_happy_img = require('./assets/image/princess-happy.png')
+const princess_sad_img = require('./assets/image/princess-sad.png')
 const cat_img = require('./assets/image/cat.gif')
 const ginseng_img = require('./assets/image/ginseng.gif')
 const snowman_img = require('./assets/image/snowman.gif')
@@ -73,7 +75,7 @@ export const TALK_TEXT = {
   8: {
     isLeft: true,
     talk: '准备好了！',
-    roleImg: princess_stand_img,
+    roleImg: princess_happy_img,
     goNext: true
   },
   // 第一关-钓鱼
@@ -103,7 +105,7 @@ export const TALK_TEXT = {
   13: {
     isLeft: true,
     talk: '这样就得到第一个数字啦！',
-    roleImg: princess_stand_img,
+    roleImg: princess_happy_img,
     goNext: true
   },
   // 第二关-打地鼠
@@ -139,7 +141,7 @@ export const TALK_TEXT = {
   19: {
     isLeft: true,
     talk: `嗯。。。【${CLUE_CONFIG.secondClue}】，暂时还不明白什么意思，我需要去冰雪谷看看~`,
-    roleImg: princess_stand_img,
+    roleImg: princess_sad_img,
     goNext: true
   },
   // 第三关-雪花雨
@@ -164,28 +166,45 @@ export const TALK_TEXT = {
   23: {
     isLeft: true,
     talk: '这样就得到第二个数字啦！',
-    roleImg: princess_stand_img,
+    roleImg: princess_happy_img,
     goNext: true
   },
   // 第四关-谜语
   24: {
     isLeft: false,
-    talk: '智慧的公主呀~我有十二个谜语，公主要一个一个猜，最后一个谜语的答案就是第三个数字的线索~',
+    talk: '智慧的公主呀，我这里有十二个谜语，公主要一个一个猜，【最后一个谜语的答案就是第三个数字的线索】。注意哦，猜错一个就要重新开始猜谜语。',
     roleImg: mushroom_img,
     textHeight: 52,
     hasChoose: true
   },
+  25: {
+    isLeft: true,
+    talk: '什么圆圆墙上头？啊！我知道第三个数字在哪里啦！',
+    roleImg: princess_happy_img
+  },
+  26: {
+    isLeft: true,
+    talk: '本公主果然是最棒的！集齐了三个数字！',
+    roleImg: princess_happy_img
+  },
+  27: {
+    isLeft: false,
+    talk: '唔，智慧的公主殿下！您集齐了三个数字了吗？告诉我数字是什么？'
+  }
 }
 
 export const RIDDLE_LISTS = {
+  0: {
+    riddle: '公主猜错咯，要重新开始啦。'
+  },
   1: {
     riddle: '什么尖尖海里游？',
     options: ['水母', '鱿鱼', '海蜇', '海参'],
     answerIndex: 1
   },
   2: {
-    riddle: '什么尖尖水边走？',
-    options: ['0', '0', '0', '0'],
+    riddle: '什么尖尖水上走？',
+    options: ['青蛙', '小船', '水车', '荷叶'],
     answerIndex: 1
   },
   3: {
@@ -199,32 +218,32 @@ export const RIDDLE_LISTS = {
     answerIndex: 0
   },
   5: {
-    riddle: '什么方方海里游？',
-    options: ['鲨鱼', '鱿鱼', '海星', '箱鲀'],
+    riddle: '什么弯弯海里游？',
+    options: ['鲨鱼', '鱿鱼', '海星', '海参'],
     answerIndex: 3
   },
   6: {
-    riddle: '什么方方水边走？',
-    options: ['0', '0', '0', '0'],
+    riddle: '什么弯弯水上走？',
+    options: ['青蛙', '蝌蚪', '小船', '水车'],
     answerIndex: 1
   },
   7: {
-    riddle: '什么方方街上卖？',
-    options: ['手帕', '镜子', '粽子', '包子'],
+    riddle: '什么弯弯街上卖？',
+    options: ['香蕉', '镜子', '粽子', '包子'],
     answerIndex: 0
   },
   8: {
-    riddle: '什么方方墙上头？',
-    options: ['钉子', '壁画', '挂钟', '星星'],
-    answerIndex: 1
+    riddle: '什么弯弯墙上头？',
+    options: ['钉子', '春联', '挂钟', '挂钩'],
+    answerIndex: 3
   },
   9: {
     riddle: '什么圆圆海里游？',
-    options: ['水母', '鱿鱼', '海蜇', '海参'],
+    options: ['水母', '鱿鱼', '鲨鱼', '海参'],
     answerIndex: 0
   },
   10: {
-    riddle: '什么圆圆水边走？',
+    riddle: '什么圆圆水上走？',
     options: ['芦苇', '水牛', '锄头', '水车'],
     answerIndex: 3
   },

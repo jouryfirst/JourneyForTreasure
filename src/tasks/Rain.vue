@@ -82,7 +82,7 @@
 <script>
 import Taro from "@tarojs/taro";
 import { throttle } from "../utils/tools";
-import { SNOW_CONFIG } from '../constant'
+import { SNOW_CONFIG } from "../constant";
 
 export default {
   data() {
@@ -104,13 +104,15 @@ export default {
   },
   methods: {
     initSnow() {
-      const { continueTime, snowNum} = SNOW_CONFIG
+      const { continueTime, snowNum } = SNOW_CONFIG;
       this.rainConfig = {
         continueTime, // 降雪时长
         snowNum, // 一共多少个雪花
       };
+      this.catchNum = 0
       this.duration = this.rainConfig.continueTime * 1000;
       this.continueTime = this.rainConfig.continueTime;
+      clearInterval(this.countDownTimer);
       this.countDownTimer = setInterval(() => {
         if (this.beforeStartTime <= 0) {
           clearInterval(this.countDownTimer);
@@ -130,6 +132,7 @@ export default {
 
     // 开始倒计时
     beginSnowCountdown() {
+      clearInterval(this.snowPeriodTimer);
       this.snowPeriodTimer = setInterval(() => {
         if (this.continueTime <= 0) {
           clearInterval(this.snowPeriodTimer);
@@ -139,7 +142,7 @@ export default {
         this.continueTime--;
       }, 1000);
     },
-    // 开启红包雨动画
+    // 开启雪花雨动画
     startSnow() {
       const systemInfo = Taro.getSystemInfoSync();
       const { windowWidth, windowHeight } = systemInfo;
@@ -153,11 +156,7 @@ export default {
         durTime: durTime,
         isHide: false,
       });
-      setTimeout(() => {
-        // 多少时间结束
-        clearTimeout(this.timer);
-        return false;
-      }, this.duration + 2);
+      clearTimeout(this.timer);
       this.timer = setTimeout(() => {
         this.startSnow();
       }, Math.round(this.duration / this.rainConfig.snowNum));
@@ -172,21 +171,23 @@ export default {
     },
     // 结束下雪时间
     snowEnd() {
-      this.rainParams = []
+      this.rainParams = [];
       this.isCatched = this.catchNum >= this.target;
+      clearTimeout(this.timer);
+      this.timer = null
       this.endVisible = true;
     },
-    restart () {
-      this.endVisible = false
-      this.beforeStartTime = 5
-      this.countDownVisible = true
-      this.initSnow()
+    restart() {
+      this.endVisible = false;
+      this.beforeStartTime = 5;
+      this.countDownVisible = true;
+      this.initSnow();
     },
     goNext() {
-Taro.navigateTo({
+      Taro.navigateTo({
         url: "/pages/index/index?sceneIndex=22",
       });
-    }
+    },
   },
 };
 </script>
@@ -246,11 +247,8 @@ Taro.navigateTo({
       &.success-text {
         font-size: 66px;
         color: #f4572f;
-        text-shadow: 0 0 2px #fff,
-                     0 0 5px #fff,
-                     0 0 8px #fff,
-                     0 0 10px #a8416c,
-                     0 0 12px #a8416c
+        text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 8px #fff, 0 0 10px #a8416c,
+          0 0 12px #a8416c;
       }
     }
     .restart-btn {
