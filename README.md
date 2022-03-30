@@ -1,2 +1,2 @@
 # JourneyForTreasure
-wxplugin used taro as a gift to wife
+wx miniprogram used taro as a birthday gift for my wife

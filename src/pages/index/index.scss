@@ -13,6 +13,10 @@
   .forest-scene {
     background-image: url('../../assets/image/forest.png');
     background-size: cover;
+    &.ice-world {
+      background-image: url('../../assets/image/iceWorld.jpg');
+      background-size: cover;
+    }
   }
   .run-loading {
     position: absolute;

@@ -9,7 +9,8 @@ export const FISH_CONFIG = {
 
 // 打地鼠配置
 export const MOUSE_CONFIG = {
-  target: 10, // 目标数
+  target: 15, // 目标数
+  continueTime: 30, // 时长
 }
 
 // 雪花雨配置
@@ -22,7 +23,7 @@ export const SNOW_CONFIG = {
 const CLUE_CONFIG = {
   treasurePos: '书房的柜子', // 宝箱藏的位置
   firstNum: '十二白', // 钢琴的第十二个白色键对应的音调数字
-  firstClue: '像桌不是桌，不能摆吃喝。有黑又有白，一摁就唱歌', // 钢琴
+  firstClue: '像案又像桌，不能摆吃喝。有黑又有白，一摁就唱歌', // 钢琴
   secondClue: '第二个数字就藏在第二行第三个格子里', // 第二个数字的线索
   boxPos: '烘焙箱里' , // 小雪人的爱心盒子位置
 }
@@ -127,7 +128,7 @@ export const TALK_TEXT = {
   },
   17: {
     isLeft: false,
-    talk: `【小老鼠会在洞里钻来钻去，在露出脑袋的时候可以点击它，点击${MOUSE_CONFIG.target}次就可以赶走它了。】`,
+    talk: `【小老鼠会在洞里钻来钻去，在露出脑袋的时候可以点击它，点击${MOUSE_CONFIG.target}次就可以赶走它了。要注意，${MOUSE_CONFIG.continueTime}s后小老鼠就钻进洞里睡觉了，再不出来。】`,
     roleImg: ginseng_img,
     textHeight: 52,
     hasChoose: true
@@ -148,26 +149,30 @@ export const TALK_TEXT = {
   20: {
     isLeft: true,
     talk: '这里就是冰雪谷啦~~',
-    roleImg: princess_stand_img
+    roleImg: princess_stand_img,
+    bg: 'iceWorld'
   },
   21: {
     isLeft: false,
     talk: `哒哒~~远道而来的公主哟~~我的身子越来越小啦，马上就要下雪啦，你可以帮我采集${SNOW_CONFIG.target}朵雪花嘛~`,
     roleImg: snowman_img,
     textHeight: 52,
-    hasChoose: true
+    hasChoose: true,
+    bg: 'iceWorld'
   },
   22: {
     isLeft: false,
     talk: `哒哒~~谢谢您~~，我昨天做了一个爱心盒子，放在了【${CLUE_CONFIG.boxPos}】。我把它送给您，里面有第二个数字，但是我忘记了放在哪个格子里。`,
     roleImg: snowman_img,
     textHeight: 52,
+    bg: 'iceWorld'
   },
   23: {
     isLeft: true,
     talk: '这样就得到第二个数字啦！',
     roleImg: princess_happy_img,
-    goNext: true
+    goNext: true,
+    bg: 'iceWorld'
   },
   // 第四关-谜语
   24: {
