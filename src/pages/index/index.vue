@@ -96,7 +96,10 @@
         </view>
       </view>
     </view>
-    <view class="end-view" v-if="isEnd">123</view>
+    <view
+      v-if="isEnd"
+      class="end-view"
+    />
   </view>
 </template>
 
@@ -113,7 +116,7 @@ export default {
   },
   data() {
     return {
-      sceneIndex: 29, // 第几个场景
+      sceneIndex: 0, // 第几个场景
       canTap: false, // 语句未显示完不可点击
       runVisible: false, // 跑步动画
       obj: {

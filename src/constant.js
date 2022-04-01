@@ -203,7 +203,7 @@ export const TALK_TEXT = {
   },
   29: {
     isLeft: false,
-    talk: '公主应该可以打开宝箱了，我的使命完成了，再见了公主殿下。',
+    talk: '公主应该可以打开宝箱啦，我的使命就完成了，再见了公主殿下。',
     textHeight: 32
   }
 }
