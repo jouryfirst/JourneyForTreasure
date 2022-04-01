@@ -1,23 +1,28 @@
 .home-container {
   position: relative;
+
   .output-text {
     font-size: 60px;
     font-weight: bold;
     font-family: 'YouYuan';
     text-align: center;
+
     &.left-output-text {
       padding-left: 200px;
       font-weight: bolder;
     }
   }
+
   .forest-scene {
     background-image: url('../../assets/image/forest.png');
     background-size: cover;
+
     &.ice-world {
       background-image: url('../../assets/image/iceWorld.jpg');
       background-size: cover;
     }
   }
+
   .run-loading {
     position: absolute;
     width: 100vw;
@@ -26,18 +31,78 @@
     top: 0;
     background-image: url('../../assets/image/runBg.png');
     background-size: cover;
+
     .run-text {
       text-align: center;
       font-weight: bolder;
       font-size: 60px;
       margin: 20vh 0;
-    font-weight: bold;
-    font-family: 'YouYuan';
-    color: #fff;
+      font-weight: bold;
+      font-family: 'YouYuan';
+      color: #fff;
     }
+
     .run-img {
       width: 100vw;
       height: 22vh;
     }
+  }
+
+  .input-dialog {
+    width: 100vw;
+    height: 100vh;
+    font-weight: bold;
+    font-family: 'YouYuan';
+    font-size: 60px;
+    color: #fff;
+    text-align: center;
+    padding-top: 30vh;
+
+    .num-text {
+      margin-bottom: 5vh;
+    }
+
+    .num-input {
+      border-bottom: 3px solid #fff;
+      font-weight: normal;
+    }
+
+    .confirm-btn {
+      padding: 20px 30px;
+      margin: 5vh 70px;
+      border-radius: 50px 50px 30px 30px;
+      border: 6px solid #aea71d;
+      background-color: #7fe348;
+    }
+
+  }
+  .tips-content {
+    position: absolute;
+    top: 20px;
+    z-index: 999;
+    .tips-btn {
+      width: 73px;
+      height: 73px;
+      background-image: url('../../assets/image/tips.png');
+      background-size: cover;
+    }
+    .tips-dialog {
+      background-color: antiquewhite;
+      border-radius: 30px;
+      padding: 50px;
+      font-family: 'YouYuan';
+      line-height: 50px;
+      .clue-tips {
+        margin-bottom: 30px;
+      }
+      .title {
+        font-weight: bold;
+      }
+    }
+  }
+  .end-view {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
   }
 }

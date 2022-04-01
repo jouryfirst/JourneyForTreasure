@@ -75,7 +75,7 @@ export default {
     top: 40%;
     transform: translate(-50%, -50%);
     width: 80vw;
-    padding: 40px;
+    padding: 50px;
     &.left-talk {
       border-radius: 30% 20% 32% 44%;
       background-color: #fefeee;

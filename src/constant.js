@@ -1,5 +1,5 @@
 // 场景中的密码
-const SCENE_PASSWORD = ''
+export const SCENE_PASSWORD = 326
 
 // 钓鱼配置
 export const FISH_CONFIG = {
@@ -20,12 +20,12 @@ export const SNOW_CONFIG = {
   snowNum: 30 // 一共多少个雪花
 }
 
-const CLUE_CONFIG = {
+export const CLUE_CONFIG = {
   treasurePos: '书房的柜子', // 宝箱藏的位置
   firstNum: '十二白', // 钢琴的第十二个白色键对应的音调数字
   firstClue: '像案又像桌，不能摆吃喝。有黑又有白，一摁就唱歌', // 钢琴
-  secondClue: '第二个数字就藏在第二行第三个格子里', // 第二个数字的线索
-  boxPos: '烘焙箱里' , // 小雪人的爱心盒子位置
+  secondClue: '第二个数字就藏在最左列第二个格子里', // 第二个数字的线索
+  boxPos: '床底下的抽屉里' , // 小雪人的爱心盒子位置
 }
 
 const princess_amazed_img = require('./assets/image/princess-amazed.png')
@@ -63,7 +63,7 @@ export const TALK_TEXT = {
   },
   5: {
     isLeft: false,
-    talk: '看到了吗，这是一个宝箱！它需要三个数字才能打开，您在试炼途中可以得到线索与数字。'
+    talk: '看到了吗，这是一个宝箱！它需要三个数字才能打开，您在试炼途中可以得到线索与数字。还有左上角的按钮，当你获得线索后可以点击查看。'
   },
   6: {
     isLeft: false,
@@ -194,7 +194,17 @@ export const TALK_TEXT = {
   },
   27: {
     isLeft: false,
-    talk: '唔，智慧的公主殿下！您集齐了三个数字了吗？告诉我数字是什么？'
+    talk: '唔，公主殿下！祝贺您完成了寻宝之旅并集齐了三个数，告诉我数字是什么？'
+  },
+  28: {
+    isLeft: false,
+    talk: '恭喜您！聪明的公主殿下，请记好数字兑换的规则：【第一个数字除以1，第二个数字除以2，第三个数字除以3】，得到的3个数字就是宝箱的密码。',
+    textHeight: 52
+  },
+  29: {
+    isLeft: false,
+    talk: '公主应该可以打开宝箱了，我的使命完成了，再见了公主殿下。',
+    textHeight: 32
   }
 }
 
